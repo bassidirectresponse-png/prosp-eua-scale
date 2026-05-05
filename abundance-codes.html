@@ -16,216 +16,456 @@
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      background: #0f0f0f;
-      color: #e4e4e7;
+      background: #0a0a0a;
+      color: #d4d4d8;
       font-size: 17px;
-      line-height: 1.8;
+      line-height: 1.85;
     }
     a { color: #93c5fd; text-decoration: none; transition: color 0.2s; }
     a:hover { color: #bfdbfe; }
 
+    .progress-bar {
+      position: fixed; top: 0; left: 0; width: 0%; height: 3px; z-index: 100;
+      background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+      transition: width 0.1s linear;
+    }
+
     .blog-header {
-      background: #0a0a0a;
-      padding: 16px 24px;
-      border-bottom: 1px solid #27272a;
+      background: #050505;
+      padding: 14px 24px;
+      border-bottom: 1px solid #1a1a1e;
       text-align: center;
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(5, 5, 5, 0.9);
     }
     .blog-header-name {
-      font-size: 18px;
-      color: #e4e4e7;
-      font-weight: 600;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      color: #a1a1aa;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
     }
+
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 50% at 50% 30%, rgba(139,92,246,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(251,191,36,0.06) 0%, transparent 60%),
+        linear-gradient(180deg, #0d0d12 0%, #0a0a0f 100%);
+    }
+    .hero-dove {
+      position: absolute; top: 50px; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 80px;
+    }
+    .dove-body {
+      position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 24px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50% 50% 40% 40%;
+    }
+    .dove-wing-l, .dove-wing-r {
+      position: absolute; top: 20px;
+      width: 45px; height: 20px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 80% 80% 0 0;
+    }
+    .dove-wing-l { left: 50%; transform: translateX(-100%) rotate(-15deg); transform-origin: right center; }
+    .dove-wing-r { left: 50%; transform: rotate(15deg); transform-origin: left center; }
+    .hero-glow {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 350px;
+      background:
+        radial-gradient(ellipse 40% 35% at 50% 30%, rgba(251,191,36,0.08) 0%, transparent 100%),
+        radial-gradient(ellipse 60% 50% at 50% 25%, rgba(139,92,246,0.05) 0%, transparent 100%);
+    }
+    .hero-stars {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 35%, rgba(255,255,255,0.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 30%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 50%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 35% 25%, rgba(251,191,36,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 65% 15%, rgba(251,191,36,0.25) 0%, transparent 100%);
+    }
+    .hero-gradient-bottom {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 60%;
+      background: linear-gradient(to top, #0a0a0a 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 5;
+      max-width: 720px; margin: 0 auto;
+      padding: 0 20px 48px;
+      width: 100%;
+    }
+    .hero-content .category-tag {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.2em; color: #a78bfa;
+      display: inline-block; margin-bottom: 16px;
+      background: rgba(139,92,246,0.1); padding: 6px 14px; border-radius: 4px;
+      border: 1px solid rgba(139,92,246,0.15);
+    }
+    .hero-content .article-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+    .hero-content .article-meta {
+      font-size: 14px; color: #71717a;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .meta-dot { width: 3px; height: 3px; background: #3f3f46; border-radius: 50%; }
 
     .content-container {
       max-width: 720px;
       margin: 0 auto;
-      padding: 48px 20px;
+      padding: 48px 20px 0;
     }
 
-    .category-tag {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #8b5cf6;
-      display: inline-block;
-      margin-bottom: 16px;
-    }
-
-    .article-title {
+    .article-body > p:first-of-type::first-letter {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1.2;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-
-    .article-meta {
-      font-size: 13px;
-      color: #71717a;
-    }
-
-    .divider {
-      border: none;
-      border-top: 1px solid #27272a;
-      margin: 24px 0;
-    }
-
-    .featured-image {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 12px;
-      margin-bottom: 32px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 30%, #1a1a2e 60%, #0d1b2a 100%);
+      font-size: 3.4em;
+      float: left;
+      line-height: 0.85;
+      margin: 4px 12px 0 0;
+      color: #a78bfa;
+      font-weight: 700;
     }
 
     .article-body p {
-      margin-bottom: 24px;
-      color: #e4e4e7;
+      margin-bottom: 26px;
+      color: #d4d4d8;
     }
 
     .article-body h2 {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 24px;
+      font-size: 26px;
       color: #fff;
-      margin-top: 40px;
-      margin-bottom: 16px;
+      margin-top: 56px;
+      margin-bottom: 20px;
       line-height: 1.3;
+      padding-top: 32px;
+      border-top: 1px solid #1e1e24;
     }
 
     .article-body blockquote {
       border-left: 3px solid #8b5cf6;
-      padding-left: 20px;
+      padding: 16px 24px;
       color: #a1a1aa;
       font-style: italic;
-      margin: 32px 0;
-    }
-
-    .disclaimer-box {
-      background: rgba(39, 39, 42, 0.5);
-      border: 1px solid #27272a;
-      border-radius: 8px;
-      padding: 20px;
-      font-size: 14px;
-      color: #a1a1aa;
-      margin: 40px 0 32px;
+      margin: 36px 0;
+      background: rgba(139,92,246,0.04);
+      border-radius: 0 8px 8px 0;
+      font-size: 18px;
       line-height: 1.7;
     }
 
+    .pull-quote {
+      text-align: center;
+      padding: 40px 32px;
+      margin: 48px 0;
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      font-family: Georgia, serif;
+      font-size: 80px;
+      color: rgba(139,92,246,0.2);
+      position: absolute;
+      top: -10px; left: 50%; transform: translateX(-50%);
+      line-height: 1;
+    }
+    .pull-quote p {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      line-height: 1.5;
+      color: #e4e4e7;
+      font-style: italic;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #71717a;
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    .section-image {
+      width: 100%;
+      aspect-ratio: 21/9;
+      border-radius: 12px;
+      margin: 36px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-image .img-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 32px 20px 14px;
+      background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 100%);
+      font-size: 12px; color: #71717a; font-style: italic; text-align: center;
+    }
+
+    .img-geometry {
+      position: relative;
+      background: linear-gradient(180deg, #0c0c14 0%, #0a0a10 100%);
+      overflow: hidden;
+    }
+    .img-geometry::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      width: 120px; height: 120px;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border: 1px solid rgba(251,191,36,0.15);
+    }
+    .img-geometry::after {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      width: 170px; height: 170px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(139,92,246,0.12);
+      border-radius: 50%;
+    }
+
+    .geo-inner {
+      position: absolute; top: 50%; left: 50%;
+      width: 85px; height: 85px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(251,191,36,0.1);
+      border-radius: 50%;
+    }
+    .geo-dot {
+      position: absolute; top: 50%; left: 50%;
+      width: 6px; height: 6px;
+      transform: translate(-50%, -50%);
+      background: rgba(251,191,36,0.25);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(251,191,36,0.15);
+    }
+
+    .img-mind {
+      background:
+        radial-gradient(ellipse 40% 50% at 50% 50%, rgba(139,92,246,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 25% 30% at 50% 50%, rgba(99,102,241,0.08) 0%, transparent 100%),
+        conic-gradient(from 0deg at 50% 50%,
+          transparent 0deg, rgba(139,92,246,0.03) 30deg, transparent 60deg,
+          transparent 90deg, rgba(99,102,241,0.03) 120deg, transparent 150deg,
+          transparent 180deg, rgba(139,92,246,0.03) 210deg, transparent 240deg,
+          transparent 270deg, rgba(99,102,241,0.03) 300deg, transparent 330deg,
+          transparent 360deg
+        ),
+        linear-gradient(180deg, #0c0c14 0%, #0a0a10 100%);
+    }
+
+    .img-meditation {
+      background:
+        radial-gradient(ellipse 30% 40% at 50% 60%, rgba(251,191,36,0.08) 0%, transparent 100%),
+        radial-gradient(ellipse 60% 30% at 50% 90%, rgba(20,20,30,0.8) 0%, transparent 100%),
+        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(139,92,246,0.06) 0%, transparent 70%),
+        linear-gradient(180deg, #0e0e16 0%, #0a0a10 100%);
+    }
+
+    .toc {
+      background: rgba(20,20,26,0.6);
+      border: 1px solid #1e1e24;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+    .toc-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 14px;
+      color: #71717a;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc-counter;
+      padding: 0;
+    }
+    .toc li {
+      counter-increment: toc-counter;
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .toc li::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      color: #8b5cf6;
+      font-weight: 600;
+      font-size: 12px;
+      margin-right: 12px;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+    .toc a { color: #a1a1aa; }
+    .toc a:hover { color: #e4e4e7; }
+
+    .disclaimer-box {
+      background: rgba(20,20,26,0.6);
+      border: 1px solid #1e1e24;
+      border-radius: 12px;
+      padding: 24px;
+      font-size: 14px;
+      color: #a1a1aa;
+      margin: 48px 0 36px;
+      line-height: 1.7;
+    }
+    .disclaimer-box strong { color: #d4d4d8; }
+
     .sources-section {
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
     .sources-section h3 {
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 18px;
-      color: #fff;
+      color: #e4e4e7;
       margin-bottom: 16px;
     }
     .sources-section ul {
-      list-style: disc;
-      padding-left: 20px;
+      list-style: none;
+      padding: 0;
     }
     .sources-section li {
       font-size: 14px;
-      color: #a1a1aa;
-      margin-bottom: 8px;
+      color: #71717a;
+      margin-bottom: 12px;
       line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .sources-section li::before {
+      content: '';
+      position: absolute; left: 0; top: 10px;
+      width: 4px; height: 4px;
+      background: #3f3f46; border-radius: 50%;
     }
 
-    .related-section {
-      margin-top: 8px;
-    }
+    .divider { border: none; border-top: 1px solid #1e1e24; margin: 32px 0; }
+
+    .related-section { margin-top: 12px; }
     .related-section h3 {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 18px;
-      color: #fff;
-      margin-bottom: 16px;
+      font-size: 18px; color: #e4e4e7; margin-bottom: 16px;
     }
     .related-card {
-      display: block;
-      background: rgba(39, 39, 42, 0.5);
-      border: 1px solid #27272a;
-      border-radius: 8px;
+      display: flex; gap: 20px; align-items: center;
+      background: rgba(20,20,26,0.5);
+      border: 1px solid #1e1e24;
+      border-radius: 12px;
       padding: 20px;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.25s, transform 0.25s;
       text-decoration: none;
     }
     .related-card:hover {
-      border-color: #3f3f46;
-      background: rgba(39, 39, 42, 0.8);
+      border-color: #2e2e36;
+      transform: translateY(-2px);
     }
+    .related-card-thumb {
+      flex-shrink: 0; width: 80px; height: 80px; border-radius: 8px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+    .related-card-body { flex: 1; }
     .related-card-title {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 17px;
-      color: #fff;
-      margin-bottom: 8px;
-      line-height: 1.3;
+      font-size: 16px; color: #e4e4e7;
+      margin-bottom: 6px; line-height: 1.3;
     }
     .related-card-desc {
-      font-size: 14px;
-      color: #a1a1aa;
-      line-height: 1.6;
+      font-size: 13px; color: #71717a; line-height: 1.5;
     }
 
     .footer {
-      background: rgba(39, 39, 42, 0.3);
+      background: rgba(15, 15, 18, 0.8);
       padding: 32px 0;
-      border-top: 1px solid #27272a;
-      margin-top: 48px;
+      border-top: 1px solid #1e1e24;
+      margin-top: 56px;
     }
     .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      text-align: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 16px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
     }
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .footer-links a {
-      font-size: 12px;
-      color: #a1a1aa;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover {
-      color: #e4e4e7;
-    }
-    .footer-links .sep {
-      color: #3f3f46;
-      font-size: 12px;
-    }
-    .footer-copy {
-      font-size: 11px;
-      color: rgba(161, 161, 170, 0.7);
-    }
+    .footer-links { display: flex; align-items: center; gap: 8px; }
+    .footer-links a { font-size: 12px; color: #a1a1aa; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #e4e4e7; }
+    .footer-links .sep { color: #3f3f46; font-size: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(161,161,170,0.7); }
 
     @media screen and (max-width: 480px) {
-      .content-container { padding: 32px 16px; }
-      .article-body h2 { font-size: 21px; }
-      .disclaimer-box { padding: 16px; }
+      .hero-banner { min-height: 340px; }
+      .hero-content { padding: 0 16px 36px; }
+      .hero-content .article-title { font-size: clamp(24px, 6vw, 36px); }
+      .content-container { padding: 32px 16px 0; }
+      .article-body h2 { font-size: 22px; margin-top: 40px; padding-top: 24px; }
+      .article-body > p:first-of-type::first-letter { font-size: 2.8em; }
+      .pull-quote { padding: 28px 16px; }
+      .pull-quote p { font-size: 18px; }
+      .disclaimer-box { padding: 18px; }
+      .toc { padding: 20px; }
+      .section-image { aspect-ratio: 16/9; }
+      .related-card { flex-direction: column; }
+      .related-card-thumb { width: 100%; height: 100px; }
     }
   </style>
 </head>
 <body>
+  <div class="progress-bar" id="progressBar"></div>
+
   <header class="blog-header">
     <span class="blog-header-name">Frequency Insights</span>
   </header>
 
+  <div class="hero-banner">
+    <div class="hero-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-stars"></div>
+    <div class="hero-dove">
+      <div class="dove-wing-l"></div>
+      <div class="dove-body"></div>
+      <div class="dove-wing-r"></div>
+    </div>
+    <div class="hero-gradient-bottom"></div>
+    <div class="hero-content">
+      <span class="category-tag">CULTURE &amp; PSYCHOLOGY</span>
+      <h1 class="article-title">Understanding "Abundance Codes": A Cultural and Psychological Exploration</h1>
+      <div class="article-meta">
+        <span>Published April 28, 2025</span>
+        <span class="meta-dot"></span>
+        <span>9 min read</span>
+      </div>
+    </div>
+  </div>
+
   <main class="content-container">
-    <span class="category-tag">CULTURE &amp; PSYCHOLOGY</span>
-    <h1 class="article-title">Understanding "Abundance Codes": A Cultural and Psychological Exploration</h1>
-    <p class="article-meta">Published April 28, 2025 &middot; 9 min read</p>
 
-    <hr class="divider">
-
-    <div class="featured-image"></div>
+    <nav class="toc">
+      <div class="toc-title">In this article</div>
+      <ol>
+        <li><a href="#roots">Historical Roots — From Ancient Symbolism to Modern Interpretation</a></li>
+        <li><a href="#psychology">The Psychology of Abundance Mindset</a></li>
+        <li><a href="#numerology">Numerology and Symbolic Patterns Across Cultures</a></li>
+        <li><a href="#visualization">Visualization and Cognitive Science</a></li>
+        <li><a href="#meditation">Meditation, Intention, and Measurable Outcomes</a></li>
+      </ol>
+    </nav>
 
     <article class="article-body">
       <p><em>This article is for informational and educational purposes only. It does not constitute financial, psychological, or therapeutic advice, and no claims are made regarding specific outcomes.</em></p>
@@ -234,7 +474,13 @@
 
       <p>This article examines the cultural and psychological roots of these ideas, exploring what various traditions have proposed, what modern psychology and neuroscience have found, and where healthy skepticism is warranted. The goal is not to validate or debunk, but to provide a thoughtful, balanced overview of a concept that continues to fascinate millions of people worldwide.</p>
 
-      <h2>Historical Roots — From Ancient Symbolism to Modern Interpretation</h2>
+      <h2 id="roots">Historical Roots — From Ancient Symbolism to Modern Interpretation</h2>
+
+      <div class="section-image img-geometry">
+        <div class="geo-inner"></div>
+        <div class="geo-dot"></div>
+        <div class="img-caption">Sacred geometry patterns have appeared across civilizations for millennia</div>
+      </div>
 
       <p>The human fascination with symbolic patterns and their potential connection to prosperity extends deep into antiquity. In ancient Mesopotamia, numerical systems were imbued with cosmological significance, and certain numbers were considered auspicious for commerce and governance. Egyptian civilization developed elaborate symbolic frameworks connecting geometric patterns to concepts of divine order and earthly abundance.</p>
 
@@ -242,11 +488,18 @@
 
       <p>Historical philosophical societies and intellectual traditions in Renaissance Europe developed elaborate systems of symbolic correspondence, drawing on Hermetic philosophy, Kabbalistic numerology, and classical Greek mathematics. These traditions proposed that understanding certain symbolic patterns could lead to greater alignment with natural laws governing prosperity and personal development. While the empirical basis for such claims is limited, the cultural influence of these ideas on Western intellectual history is well documented.</p>
 
-      <blockquote>"Numbers are the highest degree of knowledge. It is knowledge itself." — Attributed to Plato, <em>Epinomis</em></blockquote>
+      <div class="pull-quote">
+        <p>Numbers are the highest degree of knowledge. It is knowledge itself.</p>
+        <cite>— Attributed to Plato, Epinomis</cite>
+      </div>
 
       <p>In Eastern traditions, similar themes appear in different forms. Chinese numerology assigns specific qualities to numbers — the number 8, for example, is widely considered auspicious and associated with wealth, which is why it appears prominently in business naming conventions and even in the scheduling of events (the 2008 Beijing Olympics began on 08/08/08 at 8:08 PM). Hindu and Buddhist traditions incorporate numerical and geometric symbolism through mandalas, yantras, and sacred syllables, each associated with particular qualities or states of being.</p>
 
-      <h2>The Psychology of Abundance Mindset</h2>
+      <h2 id="psychology">The Psychology of Abundance Mindset</h2>
+
+      <div class="section-image img-mind">
+        <div class="img-caption">The interplay between mindset and outcomes has become a significant area of psychological research</div>
+      </div>
 
       <p>Moving from historical symbolism to modern psychology, the concept of an "abundance mindset" versus a "scarcity mindset" has become a significant topic of discussion in both popular and academic contexts. The distinction, while not originating from a single source, has been popularized through the work of several influential thinkers.</p>
 
@@ -256,7 +509,7 @@
 
       <p>Behavioral economics has also contributed to our understanding of scarcity and abundance thinking. Sendhil Mullainathan and Eldar Shafir's research, documented in their book <em>Scarcity: Why Having Too Little Means So Much</em> (2013), demonstrated that the experience of scarcity — whether of money, time, or social connection — can actually impair cognitive function and decision-making. This research suggests that a scarcity mindset may have measurable cognitive consequences, though the relationship between mindset interventions and real-world outcomes remains an area of active investigation.</p>
 
-      <h2>Numerology and Symbolic Patterns Across Cultures</h2>
+      <h2 id="numerology">Numerology and Symbolic Patterns Across Cultures</h2>
 
       <p>Numerology — the study of the purported mystical or symbolic significance of numbers — represents one of the oldest and most widespread forms of pattern-seeking in human culture. While modern science does not recognize numerological claims as empirically valid, the cultural and anthropological significance of these belief systems is considerable.</p>
 
@@ -266,7 +519,7 @@
 
       <p>Some researchers in the field of cognitive science have proposed that human pattern-recognition tendencies — what psychologists sometimes call "apophenia" or "patternicity" — may explain the universal appeal of numerological systems. Michael Shermer, in his book <em>The Believing Brain</em> (2011), argues that the human brain evolved to detect patterns as a survival mechanism, and that this tendency can lead us to perceive meaningful patterns even in random data. This perspective does not necessarily invalidate the subjective value that individuals derive from numerological frameworks, but it does suggest caution in attributing causal power to numerical patterns.</p>
 
-      <h2>Visualization and Cognitive Science</h2>
+      <h2 id="visualization">Visualization and Cognitive Science</h2>
 
       <p>One of the most frequently discussed techniques associated with abundance codes and prosperity practices is visualization — the mental rehearsal of desired outcomes. This practice has roots in various spiritual traditions but has also attracted scientific attention, particularly in the context of sports psychology and cognitive neuroscience.</p>
 
@@ -278,7 +531,11 @@
 
       <p>In the context of "abundance codes," visualization is often presented as a technique for "programming" the subconscious mind to recognize and pursue opportunities. While the neurological basis for such claims is speculative, the cognitive science of attention and perception does suggest that our expectations can influence what we notice in our environment — a phenomenon known as "selective attention" or, more colloquially, the "Reticular Activating System" (RAS) filter. Some researchers have proposed that this mechanism could partially explain why people who actively focus on specific goals may become more attuned to relevant opportunities, though rigorous evidence for this specific application remains limited.</p>
 
-      <h2>Meditation, Intention, and Measurable Outcomes</h2>
+      <h2 id="meditation">Meditation, Intention, and Measurable Outcomes</h2>
+
+      <div class="section-image img-meditation">
+        <div class="img-caption">Contemplative practices have been studied extensively in modern neuroscience</div>
+      </div>
 
       <p>Meditation and intentional practice form a core component of many abundance-related frameworks. Fortunately, meditation is also one of the most extensively studied contemplative practices in modern neuroscience, providing a relatively solid evidence base for at least some of the claims made in this domain.</p>
 
@@ -290,9 +547,14 @@
 
       <p>It is important to distinguish between well-supported findings — such as the cognitive and physiological benefits of regular meditation practice — and more speculative claims about the power of intention to directly influence external events. The former has a substantial evidence base; the latter remains outside the current scope of mainstream scientific investigation.</p>
 
+      <div class="pull-quote">
+        <p>The universal interest in prosperity and abundance across cultures reflects something fundamental about the human experience.</p>
+        <cite>— Summary</cite>
+      </div>
+
       <p>In conclusion, the concept of "abundance codes" sits at a fascinating intersection of ancient cultural traditions, modern psychology, and popular self-improvement culture. While the specific claims made by some proponents — particularly those suggesting that symbolic patterns or frequencies can directly attract material prosperity — lack robust scientific support, several of the underlying practices and principles have garnered legitimate empirical interest. Meditation, growth mindset, goal visualization combined with action planning, and the cognitive effects of scarcity versus abundance thinking are all areas where research has produced meaningful, if sometimes preliminary, findings.</p>
 
-      <p>Perhaps the most balanced perspective is one that appreciates the deep human need to find patterns and meaning in our pursuit of well-being, while maintaining the critical thinking necessary to distinguish between evidence-based practices and unfounded claims. The universal interest in prosperity and abundance across cultures reflects something fundamental about the human experience — and understanding both the psychological mechanisms and the cultural contexts behind these ideas can enrich our perspective, regardless of our individual beliefs.</p>
+      <p>Perhaps the most balanced perspective is one that appreciates the deep human need to find patterns and meaning in our pursuit of well-being, while maintaining the critical thinking necessary to distinguish between evidence-based practices and unfounded claims.</p>
 
       <div class="disclaimer-box">
         <strong>Disclaimer:</strong> This article is for informational and educational purposes only. It does not constitute financial, psychological, or therapeutic advice. The content reflects a summary of cultural traditions, historical practices, and selected research findings. No claims are made regarding the efficacy of any specific practice for achieving financial or material outcomes. Always consult qualified professionals regarding important life decisions.
@@ -303,13 +565,13 @@
       <h3>Sources &amp; Further Reading</h3>
       <ul>
         <li><a href="#">Dweck, C.S. (2006). <em>Mindset: The New Psychology of Success</em>. Random House.</a></li>
-        <li><a href="#">Oettingen, G. (2014). <em>Rethinking Positive Thinking: Inside the New Science of Motivation</em>. Current/Penguin.</a></li>
+        <li><a href="#">Oettingen, G. (2014). <em>Rethinking Positive Thinking</em>. Current/Penguin.</a></li>
         <li><a href="#">Mullainathan, S. &amp; Shafir, E. (2013). <em>Scarcity: Why Having Too Little Means So Much</em>. Times Books.</a></li>
         <li><a href="#">Hölzel, B.K. et al. (2011). "Mindfulness practice leads to increases in regional brain gray matter density." <em>Psychiatry Research: Neuroimaging</em>, 191(1).</a></li>
-        <li><a href="#">Gollwitzer, P.M. (1999). "Implementation intentions: Strong effects of simple plans." <em>American Psychologist</em>, 54(7).</a></li>
-        <li><a href="#">Shermer, M. (2011). <em>The Believing Brain: From Ghosts and Gods to Politics and Conspiracies</em>. Times Books.</a></li>
-        <li><a href="#">Yue, G. &amp; Cole, K.J. (1992). "Strength increases from the motor program: comparison of training with maximal voluntary and imagined muscle contractions." <em>Journal of Neurophysiology</em>, 67(5).</a></li>
-        <li><a href="#">Seligman, M.E.P. (2011). <em>Flourish: A Visionary New Understanding of Happiness and Well-being</em>. Free Press.</a></li>
+        <li><a href="#">Gollwitzer, P.M. (1999). "Implementation intentions." <em>American Psychologist</em>, 54(7).</a></li>
+        <li><a href="#">Shermer, M. (2011). <em>The Believing Brain</em>. Times Books.</a></li>
+        <li><a href="#">Yue, G. &amp; Cole, K.J. (1992). "Strength increases from the motor program." <em>Journal of Neurophysiology</em>, 67(5).</a></li>
+        <li><a href="#">Seligman, M.E.P. (2011). <em>Flourish</em>. Free Press.</a></li>
       </ul>
     </section>
 
@@ -318,8 +580,11 @@
     <section class="related-section">
       <h3>Related Articles</h3>
       <a href="/sacred-frequencies" class="related-card">
-        <div class="related-card-title">The Science and History Behind Sacred Frequencies: What Research Actually Says</div>
-        <div class="related-card-desc">An exploration of the historical traditions and modern research surrounding sacred frequencies, sound therapy, and the ongoing scientific debate.</div>
+        <div class="related-card-thumb"></div>
+        <div class="related-card-body">
+          <div class="related-card-title">The Science and History Behind Sacred Frequencies: What Research Actually Says</div>
+          <div class="related-card-desc">An exploration of the historical traditions and modern research surrounding sacred frequencies and sound therapy.</div>
+        </div>
       </a>
     </section>
   </main>
@@ -334,5 +599,14 @@
       <p class="footer-copy">&copy; 2025 All Rights Reserved</p>
     </div>
   </footer>
+
+  <script>
+    window.addEventListener('scroll',function(){
+      var h=document.documentElement,b=document.body;
+      var st=h.scrollTop||b.scrollTop;
+      var sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+      document.getElementById('progressBar').style.width=(st/sh*100)+'%';
+    });
+  </script>
 </body>
 </html>
